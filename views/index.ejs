@@ -6,21 +6,30 @@
     <title>Notes App</title>
 
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
   <body class="bg-zinc-900 text-white">
+    
     <main class="w-full min-h-screen p-6">
+
       <!-- Form Section -->
       <section class="max-w-xl mx-auto mb-10">
-        <form class="flex flex-col gap-5">
+        <h2 class="text-4xl font-semibold mb-10">Notely</h2> 
+        <form class="flex flex-col gap-5" action="/create" method="post">
           <input
+            name="title"
             type="text"
             placeholder="Title"
             class="w-full rounded-md bg-zinc-800 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
           />
 
           <textarea
+            name="note"
             placeholder="Write your note..."
             class="w-full rounded-md bg-zinc-800 px-4 py-2 h-32 resize-none outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
@@ -36,35 +45,31 @@
 
       <!-- Cards Section -->
       <section
-        class="grid gap-6 px-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        class="grid gap-6 px-2 mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
-        <article class="rounded-md bg-zinc-800 p-4">
-          <h2 class="text-2xl font-semibold">Some task goes here.</h2>
-          <a href="#" class="mt-3 inline-block text-blue-400 hover:underline"
-            >Read more</a
-          >
-        </article>
+        <% if(files.length > 0) { files.forEach(file => { %>
 
         <article class="rounded-md bg-zinc-800 p-4">
-          <h2 class="text-2xl font-semibold">Some task goes here.</h2>
-          <a href="#" class="mt-3 inline-block text-blue-400 hover:underline"
-            >Read more</a
-          >
+          <h2 class="text-2xl font-semibold mb-3">
+            <%=(file.replace('.txt','').replace(/-/g, ' ')).charAt(0).toUpperCase() +(file.replace('.txt','').replace(/-/g,' ').slice(1).toLowerCase())%>
+          </h2>
+
+          <div class="mt-3 flex justify-between items-center">
+            <a
+              href="/note/<%= file %>"
+              class="inline-block text-blue-400 hover:underline"
+            >
+              Read more
+            </a>
+            <a href="/edit/<%= file %>"><span class="material-symbols-outlined"> edit </span></a>
+          </div>
         </article>
 
-        <article class="rounded-md bg-zinc-800 p-4">
-          <h2 class="text-2xl font-semibold">Some task goes here.</h2>
-          <a href="#" class="mt-3 inline-block text-blue-400 hover:underline"
-            >Read more</a
-          >
-        </article>
-
-        <article class="rounded-md bg-zinc-800 p-4">
-          <h2 class="text-2xl font-semibold">Some task goes here.</h2>
-          <a href="#" class="mt-3 inline-block text-blue-400 hover:underline"
-            >Read more</a
-          >
-        </article>
+        <% }) } else { %>
+        <p class="text-3xl font-semibold tracking-tight text-center mb-10">
+          No notes yet.
+        </p>
+        <% } %>
       </section>
     </main>
 
