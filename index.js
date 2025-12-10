@@ -62,6 +62,15 @@ app.post("/edit", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/delete/:filename", (req, res) => {
+    fs.rm(`./files/${req.params.filename}`, (err) => {
+      res.redirect("/");
+      console.log("deleted");
+      if (err) console.log(err);
+    });
+  }
+);
+
 app.listen(3000, () => {
   console.log("Server is running at http://localhost:3000");
 });
