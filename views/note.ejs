@@ -20,15 +20,15 @@
         <article class="rounded-md bg-zinc-800 p-4 flex flex-col gap-3">
 
           <a href="/" class="text-blue-400 mb-3 inline-block">
-            <span class="material-symbols-outlined"> arrow_back_ios </span>
+            <span class="material-symbols-outlined shadow-md"> arrow_back_ios </span>
           </a>
 
-          <h2 class="text-4xl font-semibold mb-5">
+          <h2 class="text-4xl font-semibold mb-5 text-shadow">
             <%= 
             (filename.replace('.txt','').replace(/-/g, ' ')).charAt(0).toUpperCase() + (filename.replace('.txt','').replace(/-/g,' ').slice(1).toLowerCase())%>
           </h2>
 
-          <p class="tracking-tight font-[300] text-xl mt-3"><%= file %></p>
+          <p class="tracking-tight font-[300] text-xl mt-3 text-shadow"><%= file %></p>
 
         </article>
       </section>
