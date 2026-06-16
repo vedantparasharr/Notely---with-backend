@@ -3,7 +3,7 @@
 Full-stack note-taking application built with Node.js, Express.js, and EJS. This project demonstrates core backend concepts including routing, middleware, file operations, and dynamic template rendering.
 
 ## Features
-
+ 
 - Create, read, update, and delete notes
 - Dynamic routing with URL parameters
 - File system based data storage
